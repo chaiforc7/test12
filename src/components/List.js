@@ -11,7 +11,7 @@ import {
   MDBModalFooter,
   MDBBtn,
 } from "mdbreact";
-import dispatch from "../dispatch";
+import dispatch from "../reducer";
 import { useQuery, gql } from "@apollo/client";
 
 const List = () => {

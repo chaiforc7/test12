@@ -1,12 +1,9 @@
-import {makeVar} from '@apollo/client'
-export const Todos = makeVar([])
-if(localStorage.getItem('todos')){
-   Todos(JSON.parse(localStorage.getItem('todos')))
+import { Todos } from "./reducer";
 
-}
+
 let typePolicies = {
     Query:{
-        fields:{
+        fields:{ 
             Todos:{
                 read(_,){
                     return Todos()

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MDBInput, MDBRow, MDBCol, } from "mdbreact";
-import dispatch from "../dispatch";
+import dispatch from "../reducer";
 const AddTodo = () => {
   let [val, setVal] = useState();
 
