@@ -7,7 +7,7 @@ import App from "./App";
 
 import * as serviceWorker from "./serviceWorker";
 import dispatch from './reducer'
-import { InMemoryCache, ApolloClient, ApolloProvider } from "@apollo/client";
+import { InMemoryCache, ApolloClient, ApolloProvider, } from "@apollo/client";
 import typePolicies from "./typePolicies";
 window.dispatch = dispatch
 const client = new ApolloClient({

@@ -1,49 +1,49 @@
-import {makeVar} from '@apollo/client'
-export const Todos = makeVar([])
-if(localStorage.getItem('todos')){
-   Todos(JSON.parse(localStorage.getItem('todos')))
+import { makeVar } from "@apollo/client";
+export const Todos = makeVar([]);
+if (localStorage.getItem("todos")) {
+  Todos(JSON.parse(localStorage.getItem("todos")));
 }
-function todoApp(action) {
+function dispatch(action) {
   switch (action.type) {
-    case 'ADD_TODO': {
-        localStorage.setItem('todos',JSON.stringify([...Todos(), action.todo]))
+    case "ADD_TODO": {
+      localStorage.setItem("todos", JSON.stringify([...Todos(), action.todo]));
       return Todos([...Todos(), action.todo]);
     }
-    case 'UPDATE_TODO': {
-      let {text} = action.todo;
+    case "UPDATE_TODO": {
+      let { text, Id } = action.todo;
       let newState = Todos().map((i) => {
-        if (i.Id === action.todo.Id) {
+        if (i.Id === Id) {
           return {
             ...action.todo,
-            text
+            text,
           };
         } else return i;
       });
-      localStorage.setItem('todos',JSON.stringify([...newState]))
+      localStorage.setItem("todos", JSON.stringify([...newState]));
 
       return Todos([...newState]);
     }
-    case 'COMPLETE_TODO':{
-      let {complete} = !action.todo;
+    case "COMPLETE_TODO": {
+      let { completed } = !action.todo;
+      let { Id } = action.todo;
       let newState = Todos().map((i) => {
-        if (i.Id === action.todo.Id) {
+        if (i.Id === Id) {
           return {
             ...action.todo,
-            complete
+            completed,
           };
         } else return i;
       });
-      localStorage.setItem('todos',JSON.stringify([...newState]))
+      localStorage.setItem("todos", JSON.stringify([...newState]));
 
       return Todos([...newState]);
     }
-    case 'DELETE_TODO': {
-        let {Id} = action.todo;
-        let newState = Todos().filter(i=>i.Id!==Id);
-        localStorage.setItem('todos',JSON.stringify([...newState]))
+    case "DELETE_TODO": {
+      let { Id } = action.todo;
+      let newState = Todos().filter((i) => i.Id !== Id);
+      localStorage.setItem("todos", JSON.stringify([...newState]));
 
-        return Todos(newState);
-        
+      return Todos(newState);
     }
 
     default:
@@ -51,4 +51,4 @@ function todoApp(action) {
   }
 }
 
-export default todoApp
+export default dispatch;

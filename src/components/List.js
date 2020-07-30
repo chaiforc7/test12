@@ -79,7 +79,7 @@ const List = () => {
              
                 <MDBListGroupItem  key={key}>
                     <div  onClick={() => setComplete(i)}>
-                    {!i.complete ? i.text : <strike>{i.text}</strike>}
+                    {!i.completed ? i.text : <strike>{i.text}</strike>}
 
                     </div>
                   <MDBIcon

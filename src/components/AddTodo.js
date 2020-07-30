@@ -11,7 +11,7 @@ const AddTodo = () => {
         todo: {
           Id: Date.now(),
           text: val,
-          complete: false,
+          completed: false,
         },
       });
       setVal("");
