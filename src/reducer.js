@@ -2,7 +2,6 @@ import {makeVar} from '@apollo/client'
 export const Todos = makeVar([])
 if(localStorage.getItem('todos')){
    Todos(JSON.parse(localStorage.getItem('todos')))
-
 }
 function todoApp(action) {
   switch (action.type) {
@@ -11,7 +10,7 @@ function todoApp(action) {
       return Todos([...Todos(), action.todo]);
     }
     case 'UPDATE_TODO': {
-      let text = action.todo.text;
+      let {text} = action.todo;
       let newState = Todos().map((i) => {
         if (i.Id === action.todo.Id) {
           return {
@@ -25,7 +24,7 @@ function todoApp(action) {
       return Todos([...newState]);
     }
     case 'COMPLETE_TODO':{
-      let complete = !action.todo.complete;
+      let {complete} = !action.todo;
       let newState = Todos().map((i) => {
         if (i.Id === action.todo.Id) {
           return {
@@ -39,7 +38,7 @@ function todoApp(action) {
       return Todos([...newState]);
     }
     case 'DELETE_TODO': {
-        let Id = action.todo.Id;
+        let {Id} = action.todo;
         let newState = Todos().filter(i=>i.Id!==Id);
         localStorage.setItem('todos',JSON.stringify([...newState]))
 

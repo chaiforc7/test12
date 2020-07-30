@@ -74,7 +74,7 @@ const List = () => {
     <MDBRow center>
       <MDBCol md="9">
         <MDBListGroup style={{ marginTop: "3rem" }}>
-          {console.log(data.Todos,'rat')||data.Todos.map((i, key) => {
+          {data.Todos.map((i, key) => {
             return (
              
                 <MDBListGroupItem  key={key}>
