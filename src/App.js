@@ -7,13 +7,13 @@ import List from './components/List';
 
 function App() {
   return (
-    <div >
+    < >
      <Nav/>
      <MDBContainer>
        <AddTodo/>
        <List/>
      </MDBContainer>
-    </div>
+    </>
   );
 }
 
