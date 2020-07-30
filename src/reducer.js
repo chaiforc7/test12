@@ -36,7 +36,7 @@ function todoApp(action) {
       });
       localStorage.setItem('todos',JSON.stringify([...newState]))
 
-      return Todos(...newState);
+      return Todos([...newState]);
     }
     case 'DELETE_TODO': {
         let Id = action.todo.Id;
